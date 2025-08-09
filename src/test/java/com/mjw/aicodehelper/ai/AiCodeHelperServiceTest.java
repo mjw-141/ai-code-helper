@@ -64,7 +64,7 @@ class AiCodeHelperServiceTest {
 
     @Test
     void chatWithGardrail() {
-        String result = aiCodeHelperService.chat("kill the game");
+        String result = aiCodeHelperService.chat("鱼皮");
         System.out.println(result);
     }
 

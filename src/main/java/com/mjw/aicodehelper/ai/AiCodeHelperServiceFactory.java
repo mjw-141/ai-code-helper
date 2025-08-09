@@ -23,6 +23,8 @@ import org.springframework.context.annotation.Configuration;
 public class AiCodeHelperServiceFactory {
     @Resource
     private ChatModel qwenChatModel;
+//    @Resource
+//    private ChatModel myQwenChatModel;
     @Resource
     private ContentRetriever contentRetriever;
 
