@@ -6,6 +6,7 @@ import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
 
+import dev.langchain4j.model.chat.StreamingChatModel;
 import dev.langchain4j.rag.content.retriever.ContentRetriever;
 import dev.langchain4j.service.AiServices;
 import jakarta.annotation.Resource;
@@ -31,6 +32,9 @@ public class AiCodeHelperServiceFactory {
     @Resource
     private McpToolProvider mcpToolProvider;
 
+    @Resource
+    private StreamingChatModel qwenStreamingChatModel;
+
     @Bean
     public AiCodeHelperService aiCodeHelperService() {
         // 会话记忆
@@ -39,7 +43,9 @@ public class AiCodeHelperServiceFactory {
         // 构造 AI Service
         AiCodeHelperService aiCodeHelperService = AiServices.builder(AiCodeHelperService.class)
                 .chatModel(qwenChatModel)
+                .streamingChatModel(qwenStreamingChatModel)//流式输出
                 .chatMemory(chatMemory)// 会话记忆
+                .chatMemoryProvider(memoryId->MessageWindowChatMemory.withMaxMessages(10))//每个会话独立存储
                 //.chatMemoryProvider(memoryId->MessageWindowChatMemory.withMaxMessages(10))//多用户隔离
                 .contentRetriever(contentRetriever)//RAG检索增强生成
                 .tools(new InterviewQuestionTools())//工具调用
