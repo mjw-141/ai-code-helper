@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
+
 public class AiCodeHelperServiceFactory {
     @Resource
     private ChatModel qwenChatModel;

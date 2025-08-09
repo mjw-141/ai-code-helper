@@ -1,8 +1,10 @@
 package com.mjw.aicodehelper.ai;
 
+import com.mjw.aicodehelper.ai.guardrail.SafeInputGuardrail;
 import dev.langchain4j.service.MemoryId;
 import dev.langchain4j.service.Result;
 import dev.langchain4j.service.SystemMessage;
+import dev.langchain4j.service.guardrail.InputGuardrails;
 import dev.langchain4j.service.spring.AiService;
 
 import java.util.List;
@@ -15,6 +17,7 @@ import java.util.List;
  */
 
 //@AiService缺少一定灵活性
+@InputGuardrails({SafeInputGuardrail.class})
 public interface AiCodeHelperService {
     @SystemMessage(fromResource = "system-prompt.txt")
     String chat(String userMessage);

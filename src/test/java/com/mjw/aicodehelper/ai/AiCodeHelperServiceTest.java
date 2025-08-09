@@ -62,4 +62,10 @@ class AiCodeHelperServiceTest {
         System.out.println(result);
     }
 
+    @Test
+    void chatWithGardrail() {
+        String result = aiCodeHelperService.chat("kill the game");
+        System.out.println(result);
+    }
+
 }
