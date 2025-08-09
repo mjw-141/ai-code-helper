@@ -1,5 +1,6 @@
 package com.mjw.aicodehelper.ai;
 
+import com.mjw.aicodehelper.ai.tools.InterviewQuestionTools;
 import dev.langchain4j.memory.ChatMemory;
 import dev.langchain4j.memory.chat.MessageWindowChatMemory;
 import dev.langchain4j.model.chat.ChatModel;
@@ -34,6 +35,7 @@ public class AiCodeHelperServiceFactory {
                 .chatMemory(chatMemory)// 会话记忆
                 //.chatMemoryProvider(memoryId->MessageWindowChatMemory.withMaxMessages(10))//多用户隔离
                 .contentRetriever(contentRetriever)
+                .tools(new InterviewQuestionTools())
                 .build();
 
         return aiCodeHelperService;
