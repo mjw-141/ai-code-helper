@@ -55,4 +55,11 @@ class AiCodeHelperServiceTest {
         System.out.println(result);
     }
 
+
+    @Test
+    void chatWithMcp() {
+        String result = aiCodeHelperService.chat("什么是通义千问");
+        System.out.println(result);
+    }
+
 }
